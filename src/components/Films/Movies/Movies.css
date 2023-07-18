@@ -1,0 +1,21 @@
+.movies {
+  width: 100%;
+  max-width: 1280px;
+  box-sizing: border-box;
+  padding: 0 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 531px) and (max-width: 1000px) {
+  .movies {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 530px) {
+  .movies {
+    padding: 0 10px;
+  }
+}

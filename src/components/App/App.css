@@ -1,0 +1,14 @@
+.page {
+  width: 100%;
+  background-color: #aeaeae;
+  font-family: 'Inter', 'Arial', sans-serif;
+}
+
+.body {
+  min-height: 100vh;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+}
