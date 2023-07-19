@@ -19,6 +19,7 @@ function Movies() {
       <main className='movies'>
         <SearhForm />
         <MoviesCardList moviesList={displayedMovies} />
+        <button className='movies-cards__button'>Ещё</button>
       </main>
       <Footer />
     </body>

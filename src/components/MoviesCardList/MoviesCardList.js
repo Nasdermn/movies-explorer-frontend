@@ -9,7 +9,6 @@ function MoviesCardList({ moviesList }) {
           <MoviesCard movieData={movie} />
         ))}
       </ul>
-      <button className='movies-cards__button'>Ещё</button>
     </section>
   );
 }
