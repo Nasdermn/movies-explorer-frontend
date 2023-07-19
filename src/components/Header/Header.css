@@ -45,13 +45,13 @@
   background-size: 35px 35px;
 }
 
-.header__nav {
+.header__links {
   display: flex;
   gap: 50px;
   align-items: center;
 }
 
-.header__navblock {
+.header__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -59,7 +59,7 @@
   height: 32px;
 }
 
-.header__navblock_films {
+.header__wrapper_films {
   gap: 20px;
   height: 30px;
 }
@@ -216,7 +216,7 @@
   height: 28px;
 }
 
-.header__menu-nav {
+.header__menu-links {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -320,7 +320,7 @@
     display: flex;
   }
 
-  .header__menu-nav {
+  .header__menu-links {
     margin-top: 146px;
   }
 
@@ -349,7 +349,7 @@
     border-radius: 3px;
   }
 
-  .header__navblock {
+  .header__wrapper {
     gap: 14px;
   }
 }

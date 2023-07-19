@@ -24,8 +24,8 @@ function Header({ color, loggedIn }) {
       >
         <Link to='/' className='header__logo'></Link>
         {loggedIn ? (
-          <div className='header__nav'>
-            <div className='header__navblock header__navblock_films'>
+          <div className='header__links'>
+            <div className='header__wrapper header__wrapper_films'>
               <Link
                 to='/movies'
                 className={`header__link ${
@@ -60,7 +60,7 @@ function Header({ color, loggedIn }) {
                   className='header__menu-closer'
                   onClick={handleToggleMenu}
                 ></button>
-                <div className='header__menu-nav'>
+                <div className='header__menu-links'>
                   <Link
                     to='/'
                     className={`header__menu-link ${
@@ -95,7 +95,7 @@ function Header({ color, loggedIn }) {
             </div>
           </div>
         ) : (
-          <div className='header__navblock'>
+          <div className='header__wrapper'>
             <Link to='/signup' className='header__signup'>
               Регистрация
             </Link>
