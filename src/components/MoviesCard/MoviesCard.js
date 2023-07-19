@@ -1,3 +1,4 @@
+import './MoviesCard.css';
 import { useLocation } from 'react-router-dom';
 
 function MoviesCard({ movieData }) {

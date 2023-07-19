@@ -2,7 +2,7 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 1280px;
-  max-height: 560px;
+  min-height: 560px;
   padding: 50px 70px 60px;
   background-color: #f3c1f8;
   display: flex;
@@ -14,6 +14,7 @@
   font-size: 40px;
   font-weight: 400;
   line-height: 52px;
+  letter-spacing: -0.04em;
   max-width: 626px;
   text-decoration: none;
   color: black;
@@ -39,7 +40,7 @@
 
 @media (min-width: 710px) and (max-width: 870px) {
   .promo {
-    max-height: 844px;
+    min-height: 844px;
     padding: 300px 0 70px;
     align-items: center;
     gap: 140px;
@@ -53,7 +54,7 @@
 
 @media (max-width: 709px) {
   .promo {
-    max-height: 630px;
+    min-height: 630px;
     padding: 183px 0 40px;
     gap: 60px;
   }

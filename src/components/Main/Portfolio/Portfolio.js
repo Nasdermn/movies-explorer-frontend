@@ -1,7 +1,9 @@
+import './Portfolio.css';
+
 function Portfolio() {
   return (
     <section className='portfolio'>
-      <span className='portfolio__title'>Портфолио</span>
+      <h2 className='portfolio__title'>Портфолио</h2>
       <ul className='portfolio__list'>
         <li className='portfolio__li'>
           <a

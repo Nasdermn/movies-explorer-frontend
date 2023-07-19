@@ -1,13 +1,14 @@
+import './Register.css';
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header.js';
 
 function Register() {
   return (
     <body className='body'>
-      <div className='register__wrapper'>
+      <div className='wrapper'>
         <Header color={{ pink: false }} loggedIn={false} />
-        <section className='register'>
-          <h2 className='register__title'>Добро пожаловать!</h2>
+        <main className='register'>
+          <h1 className='register__title'>Добро пожаловать!</h1>
           <form className='register__form'>
             <label className='register__label'>
               <span className='register__input-title'>Имя</span>
@@ -55,7 +56,7 @@ function Register() {
               </Link>
             </p>
           </form>
-        </section>
+        </main>
       </div>
     </body>
   );

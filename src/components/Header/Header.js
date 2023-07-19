@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom';
+import './Header.css';
+import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
 function Header({ color, loggedIn }) {
+  const { pathname } = useLocation();
   const [isHeaderMenuOpen, setIsHeaderMenuOpen] = useState(false);
 
   function handleToggleMenu() {
@@ -17,19 +19,26 @@ function Header({ color, loggedIn }) {
     return (
       <header
         className={`header header_not_empty ${
-          color.pink ? 'header_color_pink' : ''
+          color.pink ? 'header_place_landing' : ''
         }`}
       >
         <Link to='/' className='header__logo'></Link>
         {loggedIn ? (
           <div className='header__nav'>
             <div className='header__navblock header__navblock_films'>
-              <Link to='/movies' className='header__link header__link_movies'>
+              <Link
+                to='/movies'
+                className={`header__link ${
+                  pathname === '/movies' ? 'header__link_active' : ''
+                }`}
+              >
                 Фильмы
               </Link>
               <Link
                 to='/saved-movies'
-                className='header__link header__link_saved'
+                className={`header__link ${
+                  pathname === '/saved-movies' ? 'header__link_active' : ''
+                }`}
               >
                 Сохраненные фильмы
               </Link>
@@ -52,13 +61,30 @@ function Header({ color, loggedIn }) {
                   onClick={handleToggleMenu}
                 ></button>
                 <div className='header__menu-nav'>
-                  <Link to='/' className='header__menu-link'>
+                  <Link
+                    to='/'
+                    className={`header__menu-link ${
+                      pathname === '/' ? 'header__menu-link_active' : ''
+                    }`}
+                  >
                     Главная
                   </Link>
-                  <Link to='/movies' className='header__menu-link'>
+                  <Link
+                    to='/movies'
+                    className={`header__menu-link ${
+                      pathname === '/movies' ? 'header__menu-link_active' : ''
+                    }`}
+                  >
                     Фильмы
                   </Link>
-                  <Link to='/saved-movies' className='header__menu-link'>
+                  <Link
+                    to='/saved-movies'
+                    className={`header__menu-link ${
+                      pathname === '/saved-movies'
+                        ? 'header__menu-link_active'
+                        : ''
+                    }`}
+                  >
                     Сохранённые фильмы
                   </Link>
                 </div>

@@ -1,3 +1,4 @@
+import './Promo.css';
 import promo from '../../../images/promo.svg';
 
 function Promo() {

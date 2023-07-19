@@ -1,13 +1,14 @@
+import './Login.css';
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header.js';
 
 function Login() {
   return (
     <body className='body'>
-      <div className='login__wrapper'>
+      <div className='wrapper'>
         <Header color={{ pink: false }} loggedIn={false} />
-        <section className='login'>
-          <h2 className='login__title'>Рады видеть!</h2>
+        <main className='login'>
+          <h1 className='login__title'>Рады видеть!</h1>
           <form className='login__form'>
             <label className='login__label'>
               <span className='login__input-title'>E-mail</span>
@@ -40,7 +41,7 @@ function Login() {
               </Link>
             </p>
           </form>
-        </section>
+        </main>
       </div>
     </body>
   );

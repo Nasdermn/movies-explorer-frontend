@@ -1,5 +1,6 @@
+import './Profile.css';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Header from '../Header/Header.js';
 
 function Profile() {
@@ -19,10 +20,10 @@ function Profile() {
     setName(evt.target.value);
   }
   return (
-    <div className='body'>
+    <body className='body'>
       <Header color={{ pink: false }} loggedIn={true} />
-      <section className='profile'>
-        <h2 className='profile__title'>Привет, Даниил!</h2>
+      <main className='profile'>
+        <h1 className='profile__title'>Привет, Даниил!</h1>
         <form className='profile__form'>
           <label className='profile__label'>
             <span className='profile__input-title'>Имя</span>
@@ -84,8 +85,8 @@ function Profile() {
             </Link>
           </div>
         )}
-      </section>
-    </div>
+      </main>
+    </body>
   );
 }
 

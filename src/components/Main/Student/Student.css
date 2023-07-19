@@ -15,6 +15,7 @@
   font-size: 22px;
   font-weight: 400;
   line-height: auto;
+  letter-spacing: -0.04em;
   padding-bottom: 23px;
   border-bottom: 1px solid #000;
   margin-bottom: 66px;
@@ -25,14 +26,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-height: 327px;
 }
 
 .student__photo {
-  max-height: 327px;
-  width: auto;
-  border-radius: 10px;
+  width: 270px;
+  height: 100%;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .student__about {
@@ -51,6 +51,7 @@
   font-size: 50px;
   font-weight: 400;
   line-height: 58px;
+  letter-spacing: -0.04em;
   margin: 0;
 }
 
@@ -60,12 +61,14 @@
   font-weight: 500;
   line-height: 20px;
   margin: 18px 0 26px;
+  padding: 0;
 }
 
 .student__description {
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
+  margin: 0;
 }
 
 .student__github {
@@ -82,17 +85,23 @@
   font-size: 13px;
 }
 
+@media (min-width: 1101px) {
+  .student__profile {
+    height: 327px;
+  }
+}
+
 @media (min-width: 740px) and (max-width: 1100px) {
   .student {
     padding: 90px 50px;
   }
 
   .student__profile {
-    max-height: 307px;
+    height: 307px;
   }
 
   .student__photo {
-    max-height: 307px;
+    width: 255px;
   }
 
   .student__about {
@@ -138,15 +147,14 @@
     display: flex;
     flex-direction: column;
     justify-content: none;
-    gap: 40px;
-    max-height: none;
+    gap: 30px;
     align-items: center;
   }
 
   .student__photo {
     width: 100%;
     max-width: 292px;
-    max-height: 352px;
+    height: 352px;
     order: 1;
   }
 
@@ -163,18 +171,19 @@
   .student__name {
     font-size: 30px;
     line-height: auto;
-    margin: 0 0 20px 0;
+    margin: 0;
   }
 
   .student__subtitle {
     font-size: 11px;
     line-height: 16px;
-    margin: 20px 0 20px;
+    margin: 10px 0 20px;
   }
 
   .student__description {
     font-size: 11px;
     line-height: 16px;
+    margin-bottom: -23px;
   }
 
   .student__github:hover {

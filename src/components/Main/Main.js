@@ -8,15 +8,17 @@ import Footer from '../Footer/Footer.js';
 
 function Main() {
   return (
-    <div className='body'>
+    <body className='body'>
       <Header color={{ pink: true }} loggedIn={false} />
-      <Promo />
-      <Project />
-      <Techs />
-      <Student />
-      <Portfolio />
+      <main className='main'>
+        <Promo />
+        <Project />
+        <Techs />
+        <Student />
+        <Portfolio />
+      </main>
       <Footer />
-    </div>
+    </body>
   );
 }
 

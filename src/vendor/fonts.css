@@ -13,11 +13,3 @@
   font-display: swap;
   src: url('./fonts/Inter-Medium.woff'), url('./fonts/Inter-Medium.woff2');
 }
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('./fonts/Inter-Bold.woff'), url('./fonts/Inter-Bold.woff2');
-}

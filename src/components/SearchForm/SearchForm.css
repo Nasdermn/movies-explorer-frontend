@@ -40,7 +40,7 @@
   outline: 0;
   width: 34px;
   height: 34px;
-  background-image: url('../../../images/loupe.svg');
+  background-image: url('../../images/loupe.svg');
   background-color: #000;
   background-repeat: no-repeat;
   background-position: center;
@@ -79,17 +79,18 @@
   content: '';
   width: 36px;
   height: 20px;
-  background-image: url('../../../images/shorts_off.svg');
+  background-image: url('../../images/shorts_off.svg');
   background-repeat: no-repeat;
   background-size: contain;
   left: 0;
   top: 0;
   transform: translate(-125%, 0);
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 .search-form__checkbox:checked + .search-form__text::before {
-  background-image: url('../../../images/shorts_on.svg');
+  background-image: url('../../images/shorts_on.svg');
 }
 
 @media (min-width: 531px) and (max-width: 1000px) {

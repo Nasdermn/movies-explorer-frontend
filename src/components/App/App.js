@@ -1,11 +1,12 @@
+import './App.css';
 // import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 // import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 // import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute.js';
 
 import Main from '../Main/Main.js';
-import Movies from '../Films/Movies/Movies.js';
-import SavedMovies from '../Films/SavedMovies/SavedMovies.js';
+import Movies from '../Movies/Movies.js';
+import SavedMovies from '../SavedMovies/SavedMovies.js';
 
 import Profile from '../Profile/Profile.js';
 import Login from '../Login/Login.js';

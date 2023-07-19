@@ -1,3 +1,5 @@
+import './Project.css';
+
 function Project() {
   return (
     <section className='project'>
@@ -24,7 +26,9 @@ function Project() {
       </div>
       <div className='project__deadlines'>
         <p className='project__deadline'>1 неделя</p>
-        <p className='project__deadline project__deadline_gray'>4 недели</p>
+        <p className='project__deadline project__deadline_color_gray'>
+          4 недели
+        </p>
         <p className='project__step'>Back-end</p>
         <p className='project__step'>Front-end</p>
       </div>

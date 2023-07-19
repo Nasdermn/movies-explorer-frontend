@@ -1,8 +1,10 @@
+import './Techs.css';
+
 function Techs() {
   return (
     <section className='techs'>
       <h2 className='techs__title'>Технологии</h2>
-      <span className='techs__heading'>7 технологий</span>
+      <p className='techs__heading'>7 технологий</p>
       <p className='techs__paragraph'>
         На курсе веб-разработки мы освоили технологии, которые применили в
         дипломном проекте.
