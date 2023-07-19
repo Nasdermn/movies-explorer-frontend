@@ -30,12 +30,18 @@
 }
 
 .portfolio__li {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-bottom: 19px;
   border-bottom: 1px solid #e8e8e8;
 }
 
 .portfolio__link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: 30px;
   font-weight: 400;
   line-height: 50px;
@@ -53,9 +59,6 @@
 
 .portfolio__link::after {
   content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
   width: 18px;
   height: 60px;
   background-image: url('../../../images/arrow.svg');
@@ -63,6 +66,12 @@
   background-repeat: no-repeat;
   background-position: center;
   transition: all 0.4s ease;
+}
+
+.portfolio__link:hover::after {
+  opacity: 0.5;
+  width: 16px;
+  height: 56px;
 }
 
 .portfolio__li:last-child {
@@ -84,6 +93,11 @@
 
   .portfolio__link::after {
     width: 17px;
+  }
+
+  .portfolio__link:hover::after {
+    width: 15px;
+    height: 54px;
   }
 }
 
@@ -109,5 +123,10 @@
   .portfolio__link::after {
     width: 11px;
     height: 28px;
+  }
+
+  .portfolio__link:hover::after {
+    width: 10px;
+    height: 26px;
   }
 }

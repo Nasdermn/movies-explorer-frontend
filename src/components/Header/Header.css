@@ -15,7 +15,7 @@
   width: 100%;
   max-width: 1280px;
   height: 74px;
-  padding: 0 110px 0 70px;
+  padding: 0 70px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -113,7 +113,9 @@
 }
 
 .header__link_account {
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 13px;
   box-sizing: border-box;
   font-weight: 500;
   line-height: 16px;
@@ -124,10 +126,7 @@
 }
 
 .header__link_account::after {
-  right: -43px;
   content: '';
-  position: absolute;
-  transform: translateY(-25%);
   width: 30px;
   height: 30px;
   background-image: url('../../images/account.svg');
@@ -226,7 +225,6 @@
 }
 
 .header__menu-link {
-  position: relative;
   font-size: 18px;
   font-weight: 500;
   line-height: auto;
@@ -246,11 +244,12 @@
 }
 
 .header__menu-account {
-  position: relative;
+  display: flex;
+  gap: 13px;
+  align-items: center;
   text-decoration: none;
   color: #000;
-  margin-top: 625px;
-  margin-left: -44px;
+  margin-top: 621px;
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;
@@ -260,10 +259,7 @@
 }
 
 .header__menu-account::after {
-  right: -43px;
   content: '';
-  position: absolute;
-  transform: translateY(-25%);
   width: 30px;
   height: 30px;
   background-image: url('../../images/account.svg');
@@ -334,7 +330,7 @@
   }
 
   .header__menu-account {
-    margin-top: 442px;
+    margin-top: 435px;
   }
 
   .header__signup {
