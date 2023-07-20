@@ -33,7 +33,9 @@ function Login() {
               />
               <span className='login__input-error'>Что-то пошло не так...</span>
             </label>
-            <button className='login__button'>Войти</button>
+            <button className='login__button' type='submit'>
+              Войти
+            </button>
             <p className='login__text'>
               Ещё не зарегистрированы? &nbsp;
               <Link to='/signup' className='login__link'>

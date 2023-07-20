@@ -166,7 +166,7 @@
   justify-content: center;
   position: fixed;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   top: 0;
   left: 0;
   visibility: hidden;
@@ -191,10 +191,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.header__menu_top {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 105px;
 }
 
 .header__menu-closer {
-  position: absolute;
+  width: 32px;
+  height: 32px;
+  align-self: end;
+  margin: 22px 22px 0 0;
   background-size: contain;
   cursor: pointer;
   border: 0;
@@ -203,10 +215,7 @@
   background-color: transparent;
   background-image: url(../../images/cross.svg);
   background-repeat: no-repeat;
-  width: 32px;
-  height: 32px;
-  top: 22px;
-  right: 22px;
+  background-size: 100% 100%;
   transition: all 0.2s ease;
 }
 
@@ -221,7 +230,6 @@
   flex-direction: column;
   align-items: center;
   gap: 25px;
-  margin-top: 160px;
 }
 
 .header__menu-link {
@@ -249,7 +257,7 @@
   align-items: center;
   text-decoration: none;
   color: #000;
-  margin-top: 621px;
+  margin-bottom: 92px;
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;
@@ -320,17 +328,16 @@
     display: flex;
   }
 
-  .header__menu-links {
-    margin-top: 146px;
+  .header__menu_top {
+    gap: 100px;
   }
 
   .header__menu-closer {
-    top: 14px;
-    right: 14px;
+    margin: 14px 14px 0 0;
   }
 
   .header__menu-account {
-    margin-top: 435px;
+    margin-bottom: 48px;
   }
 
   .header__signup {

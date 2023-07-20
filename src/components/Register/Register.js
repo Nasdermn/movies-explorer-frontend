@@ -48,7 +48,9 @@ function Register() {
                 Что-то пошло не так...
               </span>
             </label>
-            <button className='register__button'>Зарегистрироваться</button>
+            <button className='register__button' type='submit'>
+              Зарегистрироваться
+            </button>
             <p className='register__text'>
               Уже зарегистрированы? &nbsp;
               <Link to='/signin' className='register__link'>

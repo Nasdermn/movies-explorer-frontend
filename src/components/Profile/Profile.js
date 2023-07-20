@@ -23,68 +23,72 @@ function Profile() {
     <body className='body'>
       <Header color={{ pink: false }} loggedIn={true} />
       <main className='profile'>
-        <h1 className='profile__title'>Привет, Даниил!</h1>
-        <form className='profile__form'>
-          <label className='profile__label'>
-            <span className='profile__input-title'>Имя</span>
-            <input
-              disabled={!isFormEditing}
-              className='profile__input'
-              name='name'
-              type='text'
-              id='profile-input-name'
-              value={name}
-              onChange={handleNameChange}
-              required
-              placeholder='Введите имя'
-              minLength={2}
-              maxLength={30}
-            />
-          </label>
-          <label className='profile__label'>
-            <span className='profile__input-title'>E-mail</span>
-            <input
-              disabled={!isFormEditing}
-              className='profile__input'
-              name='email'
-              type='email'
-              id='profile-input-email'
-              value={email}
-              onChange={handleEmailChange}
-              required
-              placeholder='Введите e-mail'
-            />
-          </label>
-        </form>
-        {isFormEditing ? (
-          <button
-            type='submit'
-            className='profile__button profile__button_type_submit'
-            onClick={handleMakeEditable}
-          >
-            Сохранить
-          </button>
-        ) : (
-          <div className='profile__buttons'>
+        <div className='profile__top'>
+          <h1 className='profile__title'>Привет, Даниил!</h1>
+          <form className='profile__form'>
+            <label className='profile__label'>
+              <span className='profile__input-title'>Имя</span>
+              <input
+                disabled={!isFormEditing}
+                className='profile__input'
+                name='name'
+                type='text'
+                id='profile-input-name'
+                value={name}
+                onChange={handleNameChange}
+                required
+                placeholder='Введите имя'
+                minLength={2}
+                maxLength={30}
+              />
+            </label>
+            <label className='profile__label'>
+              <span className='profile__input-title'>E-mail</span>
+              <input
+                disabled={!isFormEditing}
+                className='profile__input'
+                name='email'
+                type='email'
+                id='profile-input-email'
+                value={email}
+                onChange={handleEmailChange}
+                required
+                placeholder='Введите e-mail'
+              />
+            </label>
+          </form>
+        </div>
+        <div className='profile__bottom'>
+          {isFormEditing ? (
             <button
-              className='profile__button profile__button_type_change'
-              type='button'
-              form='profile__form'
-              disabled={false}
+              type='submit'
+              className='profile__button profile__button_type_submit'
               onClick={handleMakeEditable}
             >
-              Редактировать
+              Сохранить
             </button>
-            <Link to='/signin' className='profile__link'>
+          ) : (
+            <div className='profile__buttons'>
               <button
-                className='profile__button profile__button_type_exit'
+                className='profile__button profile__button_type_change'
                 type='button'
+                form='profile__form'
+                disabled={false}
+                onClick={handleMakeEditable}
               >
-                Выйти из аккаунта
+                Редактировать
               </button>
-            </Link>
-          </div>
-        )}
+              <Link to='/signin' className='profile__link'>
+                <button
+                  className='profile__button profile__button_type_exit'
+                  type='button'
+                >
+                  Выйти из аккаунта
+                </button>
+              </Link>
+            </div>
+          )}
+        </div>
       </main>
     </body>
   );

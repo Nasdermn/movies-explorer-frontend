@@ -56,37 +56,39 @@ function Header({ color, loggedIn }) {
               }`}
             >
               <div className='header__menu-container'>
-                <button
-                  className='header__menu-closer'
-                  onClick={handleToggleMenu}
-                ></button>
-                <div className='header__menu-links'>
-                  <Link
-                    to='/'
-                    className={`header__menu-link ${
-                      pathname === '/' ? 'header__menu-link_active' : ''
-                    }`}
-                  >
-                    Главная
-                  </Link>
-                  <Link
-                    to='/movies'
-                    className={`header__menu-link ${
-                      pathname === '/movies' ? 'header__menu-link_active' : ''
-                    }`}
-                  >
-                    Фильмы
-                  </Link>
-                  <Link
-                    to='/saved-movies'
-                    className={`header__menu-link ${
-                      pathname === '/saved-movies'
-                        ? 'header__menu-link_active'
-                        : ''
-                    }`}
-                  >
-                    Сохранённые фильмы
-                  </Link>
+                <div className='header__menu_top'>
+                  <button
+                    className='header__menu-closer'
+                    onClick={handleToggleMenu}
+                  ></button>
+                  <div className='header__menu-links'>
+                    <Link
+                      to='/'
+                      className={`header__menu-link ${
+                        pathname === '/' ? 'header__menu-link_active' : ''
+                      }`}
+                    >
+                      Главная
+                    </Link>
+                    <Link
+                      to='/movies'
+                      className={`header__menu-link ${
+                        pathname === '/movies' ? 'header__menu-link_active' : ''
+                      }`}
+                    >
+                      Фильмы
+                    </Link>
+                    <Link
+                      to='/saved-movies'
+                      className={`header__menu-link ${
+                        pathname === '/saved-movies'
+                          ? 'header__menu-link_active'
+                          : ''
+                      }`}
+                    >
+                      Сохранённые фильмы
+                    </Link>
+                  </div>
                 </div>
                 <Link to='/profile' className='header__menu-account'>
                   Аккаунт

@@ -61,7 +61,7 @@
   content: '';
   width: 18px;
   height: 60px;
-  background-image: url('../../../images/arrow.svg');
+  background-image: url('../../images/arrow.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
