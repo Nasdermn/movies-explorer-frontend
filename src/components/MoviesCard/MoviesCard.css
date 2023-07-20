@@ -1,0 +1,141 @@
+.card {
+  width: 364px;
+  height: 281px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fdfdfd;
+  border-radius: 6px;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+}
+
+.card__link {
+  display: block;
+  width: 100%;
+  height: 203px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.card__image {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.card__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.card__title {
+  margin: 0;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: auto;
+  text-overflow: ellipsis;
+  overflow-y: clip;
+  max-width: 290px;
+}
+
+.card__like {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  width: 30px;
+  height: 30px;
+  background-image: url('../../images/like_off.svg');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.4s ease;
+}
+
+.card__like_active {
+  background-image: url('../../images/like.svg');
+}
+
+.card__like:hover {
+  opacity: 0.6;
+}
+
+.card__cross {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  width: 30px;
+  height: 30px;
+  background-image: url('../../images/card_cross.svg');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.4s ease;
+}
+
+.card__cross:hover {
+  opacity: 0.5;
+}
+
+.card__duration {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: auto;
+  color: #a0a0a0;
+  padding: 0 16px 16px;
+  margin: 0;
+}
+
+@media (min-width: 531px) and (max-width: 1000px) {
+  .card {
+    width: 339px;
+    height: 262px;
+    gap: 8px;
+  }
+
+  .card__link {
+    height: 190px;
+  }
+
+  .card__wrapper {
+    padding: 0 14px;
+  }
+
+  .card__title {
+    max-width: 260px;
+  }
+
+  .card__duration {
+    padding: 0 14px 14px;
+  }
+}
+
+@media (max-width: 530px) {
+  .card {
+    width: 300px;
+    height: 237px;
+    gap: 7px;
+  }
+
+  .card__link {
+    height: 168px;
+  }
+
+  .card__wrapper {
+    padding: 0 10px 0 14px;
+  }
+
+  .card__title {
+    font-size: 12px;
+    max-width: 240px;
+  }
+
+  .card__duration {
+    font-size: 10px;
+    padding: 0 14px 14px;
+  }
+}
