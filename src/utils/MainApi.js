@@ -62,7 +62,6 @@ class MainApi {
   }
 
   saveMovie(movieData) {
-    console.log(movieData);
     const {
       nameRU,
       nameEN,
@@ -122,7 +121,7 @@ class MainApi {
 }
 
 const options = {
-  url: 'https://api.films.nasdermn.nomoreparties.sbs/',
+  url: 'https://api.films.nasdermn.nomoreparties.sbs',
   headers: {
     'Content-Type': 'application/json',
   },

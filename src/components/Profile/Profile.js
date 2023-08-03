@@ -17,7 +17,6 @@ function Profile() {
 
   function handleUserChange(event) {
     event.preventDefault();
-    console.log(values);
     if (isValid) {
       mainApi
         .patchProfile(values.name, values.email)

@@ -41,7 +41,6 @@ function App() {
   }, [loggedIn, setUserInfo, jwt]);
 
   const handleDeleteCard = (id) => {
-    console.log(id);
     mainApi
       .deleteSavedMovie(id)
       .then(setLikedMovies(likedMovies.filter((m) => m._id !== id)))
@@ -49,7 +48,6 @@ function App() {
   };
 
   const handleLikeCard = (movie) => {
-    console.log(movie);
     const likedMovieToDelete = likedMovies.find(
       (likedMovie) => likedMovie.movieId === movie.id
     );

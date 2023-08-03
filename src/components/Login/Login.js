@@ -19,7 +19,6 @@ function Login({ setLoginStatus }) {
       mainApi
         .signin(values.email, values.password)
         .then((data) => {
-          console.log(data);
           if (data.token) {
             localStorage.setItem('jwt', data.token);
             mainApi.getUser(data.token).then((res) => {
