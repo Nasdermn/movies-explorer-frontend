@@ -116,7 +116,9 @@ function Register({ setLoginStatus }) {
               </Link>
             </p>
             {errorText && (
-              <span className='register__input-error'>{errorText}</span>
+              <span className='register__input-error register__input-error_type_server'>
+                {errorText}
+              </span>
             )}
           </form>
         </main>

@@ -95,7 +95,9 @@ function Login({ setLoginStatus }) {
               </Link>
             </p>
             {errorText && (
-              <span className='login__input-error'>{errorText}</span>
+              <span className='login__input-error login__input-error_type_server'>
+                {errorText}
+              </span>
             )}
           </form>
         </main>

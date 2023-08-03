@@ -64,6 +64,10 @@
   color: #ff4062;
 }
 
+.login__input-error_type_server {
+  text-align: center;
+}
+
 .login__button {
   border: 0;
   outline: 0;

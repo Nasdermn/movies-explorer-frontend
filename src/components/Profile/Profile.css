@@ -136,6 +136,15 @@
   padding: 0;
   color: rgb(25, 176, 25);
   font-size: 11px;
+  text-align: center;
+}
+
+.profile__error-message {
+  margin: 0;
+  padding: 0;
+  color: #ff4062;
+  font-size: 12px;
+  text-align: center;
 }
 
 @media (min-width: 601px) and (max-width: 800px) {

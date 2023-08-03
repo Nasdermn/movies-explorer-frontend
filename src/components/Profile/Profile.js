@@ -14,6 +14,7 @@ function Profile() {
   });
   const [isFormEditing, setIsFormEditing] = useState(false);
   const [isDataChanged, setIsDataChanged] = useState(false);
+  const [error, setError] = useState(false);
 
   function handleUserChange(event) {
     event.preventDefault();
@@ -27,9 +28,15 @@ function Profile() {
 
           setTimeout(() => {
             setIsDataChanged(false);
-          }, 500);
+          }, 900);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          setError(err.message);
+          setTimeout(() => {
+            setError(false);
+          }, 3000);
+        });
     }
   }
 
@@ -86,6 +93,11 @@ function Profile() {
             </label>
             {isDataChanged && (
               <p className='profile__success-message'>Успешная смена данных!</p>
+            )}
+            {error && (
+              <p className='profile__error-message'>
+                Данный email уже кем-то используется, выберите другой.
+              </p>
             )}
           </form>
         </div>
