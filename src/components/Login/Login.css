@@ -70,17 +70,21 @@
   font-weight: 500;
   font-size: 14px;
   line-height: auto;
-  transition: all 0.5s ease;
   cursor: pointer;
   width: 100%;
   min-height: 45px;
-  background-color: #000;
+  background-color: #591313;
   color: #fff;
   border-radius: 3px;
-  margin: 139px 0 -4px;
+  margin: 49px 0 -4px;
 }
 
-.login__button:hover {
+.login__button_enabled {
+  background-color: #000;
+  transition: all 0.5s ease;
+}
+
+.login__button_enabled:hover {
   opacity: 0.6;
   font-size: 13px;
 }

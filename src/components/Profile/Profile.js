@@ -2,30 +2,59 @@ import './Profile.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Header from '../Header/Header.js';
+import { useCurrentUserContext } from '../../contexts/CurrentUserContext';
+import { useFormWithValidation } from '../Validation/Validation.js';
+import mainApi from '../../utils/MainApi';
 
 function Profile() {
+  const { userInfo, setUserInfo, setLoggedIn } = useCurrentUserContext();
+  const { values, handleChange, errors, isValid } = useFormWithValidation({
+    name: userInfo.name,
+    email: userInfo.email,
+  });
   const [isFormEditing, setIsFormEditing] = useState(false);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [isDataChanged, setIsDataChanged] = useState(false);
+
+  function handleUserChange(event) {
+    event.preventDefault();
+    console.log(values);
+    if (isValid) {
+      mainApi
+        .patchProfile(values.name, values.email)
+        .then((updatedData) => {
+          setUserInfo(updatedData);
+          handleMakeEditable();
+          setIsDataChanged(true);
+
+          setTimeout(() => {
+            setIsDataChanged(false);
+          }, 500);
+        })
+        .catch((err) => console.log(err));
+    }
+  }
+
+  function handleUserLogout() {
+    localStorage.clear();
+    setUserInfo({ name: '', email: '' });
+    setLoggedIn(false);
+  }
 
   function handleMakeEditable() {
     setIsFormEditing(!isFormEditing);
   }
 
-  function handleEmailChange(evt) {
-    setEmail(evt.target.value);
-  }
-
-  function handleNameChange(evt) {
-    setName(evt.target.value);
-  }
   return (
-    <body className='body'>
+    <div className='body'>
       <Header color={{ pink: false }} loggedIn={true} />
       <main className='profile'>
         <div className='profile__top'>
-          <h1 className='profile__title'>Привет, Даниил!</h1>
-          <form className='profile__form'>
+          <h1 className='profile__title'>Привет, {userInfo.name}!</h1>
+          <form
+            className='profile__form'
+            onSubmit={handleUserChange}
+            id='profile__form'
+          >
             <label className='profile__label'>
               <span className='profile__input-title'>Имя</span>
               <input
@@ -34,8 +63,8 @@ function Profile() {
                 name='name'
                 type='text'
                 id='profile-input-name'
-                value={name}
-                onChange={handleNameChange}
+                value={values.name || ''}
+                onChange={handleChange}
                 required
                 placeholder='Введите имя'
                 minLength={2}
@@ -50,20 +79,30 @@ function Profile() {
                 name='email'
                 type='email'
                 id='profile-input-email'
-                value={email}
-                onChange={handleEmailChange}
+                value={values.email || ''}
+                onChange={handleChange}
                 required
                 placeholder='Введите e-mail'
               />
             </label>
+            {isDataChanged && (
+              <p className='profile__success-message'>Успешная смена данных!</p>
+            )}
           </form>
         </div>
         <div className='profile__bottom'>
+          {errors.name && (
+            <span className='profile__input-error'>{errors.name}</span>
+          )}
+          {errors.email && (
+            <span className='profile__input-error'>{errors.email}</span>
+          )}
           {isFormEditing ? (
             <button
               type='submit'
+              form='profile__form'
               className='profile__button profile__button_type_submit'
-              onClick={handleMakeEditable}
+              disabled={!isValid}
             >
               Сохранить
             </button>
@@ -78,10 +117,11 @@ function Profile() {
               >
                 Редактировать
               </button>
-              <Link to='/signin' className='profile__link'>
+              <Link to='/' className='profile__link'>
                 <button
                   className='profile__button profile__button_type_exit'
                   type='button'
+                  onClick={handleUserLogout}
                 >
                   Выйти из аккаунта
                 </button>
@@ -90,7 +130,7 @@ function Profile() {
           )}
         </div>
       </main>
-    </body>
+    </div>
   );
 }
 

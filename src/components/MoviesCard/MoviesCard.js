@@ -1,19 +1,25 @@
 import './MoviesCard.css';
 import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { API_URL } from '../../utils/constants';
+import { Timeconverter } from '../../utils/Timeconverter';
 
-function MoviesCard({ movieData }) {
+function MoviesCard({ movieData, onLike, onDelete, isLiked }) {
   const { pathname } = useLocation();
+  const [liked, setLiked] = useState(isLiked);
 
-  const isLiked = (function () {
-    return Math.random() < 0.5;
-  })();
+  useEffect(() => {
+    setLiked(isLiked);
+  }, [isLiked]);
 
-  const cardLikeButtonClassName = `card__like ${
-    isLiked && 'card__like_active'
-  }`;
+  const handleLikeClick = () => {
+    setLiked(!liked);
+    onLike(movieData);
+  };
 
-  const cardButtonClassName =
-    pathname === '/saved-movies' ? 'card__cross' : cardLikeButtonClassName;
+  const handleCrossClick = () => {
+    onDelete(movieData._id);
+  };
 
   return (
     <li className='card'>
@@ -24,16 +30,27 @@ function MoviesCard({ movieData }) {
         target='_blank'
       >
         <img
-          src={movieData.image}
+          src={
+            pathname === '/saved-movies'
+              ? movieData.image
+              : `${API_URL}${movieData.image.url}`
+          }
           alt='Фото фильма'
           className='card__image'
         ></img>
       </a>
       <div className='card__wrapper'>
         <h2 className='card__title'>{movieData.nameRU}</h2>
-        <button className={cardButtonClassName}></button>
+        {pathname === '/movies' ? (
+          <button
+            className={`card__like ${liked ? 'card__like_active' : ''}`}
+            onClick={handleLikeClick}
+          />
+        ) : (
+          <button className='card__cross' onClick={handleCrossClick} />
+        )}
       </div>
-      <p className='card__duration'>{movieData.duration}</p>
+      <p className='card__duration'>{Timeconverter(movieData.duration)}</p>
     </li>
   );
 }

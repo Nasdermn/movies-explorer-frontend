@@ -1,27 +1,72 @@
 import './SavedMovies.css';
 import { useState, useEffect } from 'react';
 
-import exampleMovies from '../../utils/examplemovies.js';
-
 import Header from '../Header/Header.js';
 import SearhForm from '../SearchForm/SearchForm.js';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.js';
 import Footer from '../Footer/Footer.js';
-function SavedMovies() {
+import Preloader from '../Preloader/Preloader.js';
+
+import mainApi from '../../utils/MainApi';
+
+function SavedMovies({ likedMovies, setLikedMovies, onDelete }) {
   const [displayedMovies, setDisplayedMovies] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [shortFilmChecked, setShortFilmChecked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    setDisplayedMovies(exampleMovies);
-  }, []);
+    handleSearchSubmit();
+  }, [shortFilmChecked]);
+
+  useEffect(() => {
+    setDisplayedMovies(likedMovies);
+  }, [likedMovies]);
+
+  function handleSearchSubmit() {
+    setIsLoading(true);
+    setError(null);
+    let filteredMovies = likedMovies.filter(
+      (movie) =>
+        movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        movie.nameEN.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    if (shortFilmChecked) {
+      filteredMovies = filteredMovies.filter((movie) => movie.duration <= 40);
+    }
+    setDisplayedMovies(filteredMovies);
+    setIsLoading(false);
+  }
+
   return (
-    <body className='body'>
+    <div className='body'>
       <Header color={{ pink: false }} loggedIn={true} />
       <main className='saved-movies'>
-        <SearhForm />
-        <MoviesCardList moviesList={displayedMovies} />
+        <SearhForm
+          onSubmit={handleSearchSubmit}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          shortFilmChecked={shortFilmChecked}
+          setShortFilmChecked={setShortFilmChecked}
+        />
+        {isLoading ? (
+          <Preloader />
+        ) : error ? (
+          <p className='saved-movies__text'>{error}</p>
+        ) : displayedMovies.length === 0 ? (
+          <p className='saved-movies__text'>Ничего не найдено</p>
+        ) : (
+          <MoviesCardList
+            moviesList={displayedMovies}
+            likedMovies={likedMovies}
+            setLikedMovies={setLikedMovies}
+            onDelete={onDelete}
+          />
+        )}
       </main>
       <Footer />
-    </body>
+    </div>
   );
 }
 
