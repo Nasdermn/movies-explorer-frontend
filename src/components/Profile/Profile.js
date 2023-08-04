@@ -1,6 +1,6 @@
 import './Profile.css';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../Header/Header.js';
 import { useCurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useFormWithValidation } from '../Validation/Validation.js';
@@ -13,8 +13,18 @@ function Profile() {
     email: userInfo.email,
   });
   const [isFormEditing, setIsFormEditing] = useState(false);
+  const [isFormChanged, setIsFormChanged] = useState(false);
   const [isDataChanged, setIsDataChanged] = useState(false);
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    // Проверяем, есть ли разница между начальными данными и текущими данными в форме
+    const isFormDirty =
+      values.name !== userInfo.name || values.email !== userInfo.email;
+
+    // Обновляем стейт, который будет указывать, можно ли отправлять форму
+    setIsFormChanged(isFormDirty);
+  }, [values, userInfo]);
 
   function handleUserChange(event) {
     event.preventDefault();
@@ -40,14 +50,16 @@ function Profile() {
     }
   }
 
+  function handleMakeEditable() {
+    setIsFormEditing(!isFormEditing);
+    // При переключении в режим редактирования сбросим флаг изменений формы
+    setIsFormChanged(false);
+  }
+
   function handleUserLogout() {
     localStorage.clear();
     setUserInfo({ name: '', email: '' });
     setLoggedIn(false);
-  }
-
-  function handleMakeEditable() {
-    setIsFormEditing(!isFormEditing);
   }
 
   return (
@@ -113,7 +125,7 @@ function Profile() {
               type='submit'
               form='profile__form'
               className='profile__button profile__button_type_submit'
-              disabled={!isValid}
+              disabled={!isValid || !isFormChanged}
             >
               Сохранить
             </button>

@@ -8,7 +8,20 @@ import Footer from '../Footer/Footer.js';
 import Preloader from '../Preloader/Preloader.js';
 
 import moviesApi from '../../utils/MoviesApi';
-function Movies({ likedMovies, setLikedMovies, onLike }) {
+
+import {
+  MONITOR_SCREEN_WIDTH,
+  TABLET_SCREEN_WIDTH,
+  MONITOR_CARDS_AMOUNT,
+  TABLET_CARDS_AMOUNT,
+  MOBILE_CARDS_AMOUNT,
+  MONITOR_CARDS_PER_LOAD,
+  TABLET_CARDS_PER_LOAD,
+  MOBILE_CARDS_PER_LOAD,
+  SHORTFILM_MAX_DURATION,
+} from '../../utils/constants';
+
+function Movies({ likedMovies, onLike }) {
   const [displayedMovies, setDisplayedMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [visibleCardsCount, setVisibleCardsCount] = useState(12); //Число отображенных на странице фильмов
@@ -52,15 +65,15 @@ function Movies({ likedMovies, setLikedMovies, onLike }) {
     function handleResize() {
       // В зависимости от ширины окна устанавливаем количество видимых карточек
       const width = window.innerWidth;
-      if (width >= 1280) {
-        setVisibleCardsCount(12);
-        setMoviesPerLoad(3);
-      } else if (width >= 768 && width < 1280) {
-        setVisibleCardsCount(8);
-        setMoviesPerLoad(2);
+      if (width >= MONITOR_SCREEN_WIDTH) {
+        setVisibleCardsCount(MONITOR_CARDS_AMOUNT);
+        setMoviesPerLoad(MONITOR_CARDS_PER_LOAD);
+      } else if (width >= TABLET_SCREEN_WIDTH && width < MONITOR_SCREEN_WIDTH) {
+        setVisibleCardsCount(TABLET_CARDS_AMOUNT);
+        setMoviesPerLoad(TABLET_CARDS_PER_LOAD);
       } else {
-        setVisibleCardsCount(5);
-        setMoviesPerLoad(2);
+        setVisibleCardsCount(MOBILE_CARDS_AMOUNT);
+        setMoviesPerLoad(MOBILE_CARDS_PER_LOAD);
       }
     }
 
@@ -91,7 +104,7 @@ function Movies({ likedMovies, setLikedMovies, onLike }) {
           );
           if (shortFilmChecked) {
             filteredMovies = filteredMovies.filter(
-              (movie) => movie.duration <= 40
+              (movie) => movie.duration <= SHORTFILM_MAX_DURATION
             );
           }
           setDisplayedMovies(filteredMovies);
@@ -142,7 +155,6 @@ function Movies({ likedMovies, setLikedMovies, onLike }) {
           <MoviesCardList
             moviesList={displayedMovies.slice(0, visibleCardsCount)}
             likedMovies={likedMovies}
-            setLikedMovies={setLikedMovies}
             onLike={onLike}
           />
         )}

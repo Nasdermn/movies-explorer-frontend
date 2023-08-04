@@ -27,7 +27,11 @@
   font-weight: 400;
   text-decoration: none;
   color: black;
-  transition: all 0.7s ease;
+  transition: all 0.4s ease;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .error__link:hover {

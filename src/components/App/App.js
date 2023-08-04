@@ -43,7 +43,12 @@ function App() {
   const handleDeleteCard = (id) => {
     mainApi
       .deleteSavedMovie(id)
-      .then(setLikedMovies(likedMovies.filter((m) => m._id !== id)))
+      .then((res) => {
+        console.log(res.message);
+        if (res.message === 'Карточка с фильмом удалена') {
+          setLikedMovies(likedMovies.filter((m) => m._id !== id));
+        }
+      })
       .catch((err) => console.log(err));
   };
 
@@ -90,7 +95,6 @@ function App() {
                 loggedIn={loggedIn}
                 element={Movies}
                 likedMovies={likedMovies}
-                setLikedMovies={setLikedMovies}
                 onLike={handleLikeCard}
               />
             }
@@ -102,7 +106,6 @@ function App() {
                 loggedIn={loggedIn}
                 element={SavedMovies}
                 likedMovies={likedMovies}
-                setLikedMovies={setLikedMovies}
                 onDelete={handleDeleteCard}
               />
             }

@@ -7,9 +7,9 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList.js';
 import Footer from '../Footer/Footer.js';
 import Preloader from '../Preloader/Preloader.js';
 
-import mainApi from '../../utils/MainApi';
+import { SHORTFILM_MAX_DURATION } from '../../utils/constants';
 
-function SavedMovies({ likedMovies, setLikedMovies, onDelete }) {
+function SavedMovies({ likedMovies, onDelete }) {
   const [displayedMovies, setDisplayedMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [shortFilmChecked, setShortFilmChecked] = useState(false);
@@ -33,7 +33,9 @@ function SavedMovies({ likedMovies, setLikedMovies, onDelete }) {
         movie.nameEN.toLowerCase().includes(searchQuery.toLowerCase())
     );
     if (shortFilmChecked) {
-      filteredMovies = filteredMovies.filter((movie) => movie.duration <= 40);
+      filteredMovies = filteredMovies.filter(
+        (movie) => movie.duration <= SHORTFILM_MAX_DURATION
+      );
     }
     setDisplayedMovies(filteredMovies);
     setIsLoading(false);
@@ -60,7 +62,6 @@ function SavedMovies({ likedMovies, setLikedMovies, onDelete }) {
           <MoviesCardList
             moviesList={displayedMovies}
             likedMovies={likedMovies}
-            setLikedMovies={setLikedMovies}
             onDelete={onDelete}
           />
         )}

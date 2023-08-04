@@ -12,9 +12,13 @@ function MoviesCard({ movieData, onLike, onDelete, isLiked }) {
     setLiked(isLiked);
   }, [isLiked]);
 
-  const handleLikeClick = () => {
-    setLiked(!liked);
-    onLike(movieData);
+  const handleLikeClick = async () => {
+    try {
+      await onLike(movieData);
+      setLiked(!liked);
+    } catch (error) {
+      console.log('Произошла ошибка при лайке фильма:', error);
+    }
   };
 
   const handleCrossClick = () => {
