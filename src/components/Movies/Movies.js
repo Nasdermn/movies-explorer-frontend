@@ -30,6 +30,8 @@ function Movies({ likedMovies, onLike }) {
   const [shortFilmChecked, setShortFilmChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [apiMovies, setApiMovies] = useState(false);
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
   // Функция для загрузки данных из localStorage при монтировании компонента
   useEffect(() => {
@@ -93,33 +95,45 @@ function Movies({ likedMovies, onLike }) {
     if (searchQuery !== '') {
       setIsLoading(true);
       setError(null);
-
-      moviesApi
-        .getMovies()
-        .then((res) => {
-          let filteredMovies = res.filter(
-            (movie) =>
-              movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              movie.nameEN.toLowerCase().includes(searchQuery.toLowerCase())
-          );
-          if (shortFilmChecked) {
-            filteredMovies = filteredMovies.filter(
-              (movie) => movie.duration <= SHORTFILM_MAX_DURATION
-            );
-          }
-          setDisplayedMovies(filteredMovies);
-          setTotalMoviesCount(filteredMovies.length);
-          localStorage.setItem('searchQuery', searchQuery);
-        })
-        .catch((err) => {
-          setError(
-            'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'
-          );
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
+      if (!isDataLoaded) {
+        // Выполняем загрузку данных только при первом сабмите формы
+        moviesApi
+          .getMovies()
+          .then((movies) => {
+            setApiMovies(movies);
+            setIsDataLoaded(true);
+            filterMovies(movies);
+          })
+          .catch((err) => {
+            console.log(err);
+            setIsLoading(false);
+          })
+          .finally(() => {
+            localStorage.setItem('searchQuery', searchQuery);
+            setIsLoading(false);
+          });
+      } else {
+        filterMovies(apiMovies);
+        localStorage.setItem('searchQuery', searchQuery);
+        setIsLoading(false);
+      }
     }
+  }
+
+  function filterMovies(movies) {
+    let filteredMovies = movies.filter(
+      (movie) =>
+        movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        movie.nameEN.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    if (shortFilmChecked) {
+      filteredMovies = filteredMovies.filter(
+        (movie) => movie.duration <= SHORTFILM_MAX_DURATION
+      );
+    }
+
+    setDisplayedMovies(filteredMovies);
+    setTotalMoviesCount(filteredMovies.length);
   }
 
   const handleLoadMoreClick = () => {

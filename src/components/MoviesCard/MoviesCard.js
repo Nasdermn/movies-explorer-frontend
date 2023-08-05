@@ -1,24 +1,13 @@
 import './MoviesCard.css';
 import { useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import { API_URL } from '../../utils/constants';
 import { Timeconverter } from '../../utils/Timeconverter';
 
 function MoviesCard({ movieData, onLike, onDelete, isLiked }) {
   const { pathname } = useLocation();
-  const [liked, setLiked] = useState(isLiked);
 
-  useEffect(() => {
-    setLiked(isLiked);
-  }, [isLiked]);
-
-  const handleLikeClick = async () => {
-    try {
-      await onLike(movieData);
-      setLiked(!liked);
-    } catch (error) {
-      console.log('Произошла ошибка при лайке фильма:', error);
-    }
+  const handleLikeClick = () => {
+    onLike(movieData);
   };
 
   const handleCrossClick = () => {
@@ -47,7 +36,7 @@ function MoviesCard({ movieData, onLike, onDelete, isLiked }) {
         <h2 className='card__title'>{movieData.nameRU}</h2>
         {pathname === '/movies' ? (
           <button
-            className={`card__like ${liked ? 'card__like_active' : ''}`}
+            className={`card__like ${isLiked ? 'card__like_active' : ''}`}
             onClick={handleLikeClick}
           />
         ) : (

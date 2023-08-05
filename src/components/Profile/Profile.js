@@ -124,7 +124,11 @@ function Profile() {
             <button
               type='submit'
               form='profile__form'
-              className='profile__button profile__button_type_submit'
+              className={`profile__button profile__button_type_submit ${
+                isValid && isFormChanged
+                  ? 'profile__button_type_submit_enabled'
+                  : ''
+              }`}
               disabled={!isValid || !isFormChanged}
             >
               Сохранить

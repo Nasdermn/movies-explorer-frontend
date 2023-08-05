@@ -44,7 +44,6 @@ function App() {
     mainApi
       .deleteSavedMovie(id)
       .then((res) => {
-        console.log(res.message);
         if (res.message === 'Карточка с фильмом удалена') {
           setLikedMovies(likedMovies.filter((m) => m._id !== id));
         }
@@ -59,12 +58,14 @@ function App() {
     if (likedMovieToDelete) {
       mainApi
         .deleteSavedMovie(likedMovieToDelete._id)
-        .then(() => {
-          setLikedMovies((prevLikedMovies) =>
-            prevLikedMovies.filter(
-              (likedMovie) => likedMovie.movieId !== movie.id
-            )
-          );
+        .then((res) => {
+          if (res.message === 'Карточка с фильмом удалена') {
+            setLikedMovies((prevLikedMovies) =>
+              prevLikedMovies.filter(
+                (likedMovie) => likedMovie.movieId !== movie.id
+              )
+            );
+          }
         })
         .catch((err) => console.log(err));
     } else {

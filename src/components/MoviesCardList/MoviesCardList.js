@@ -1,10 +1,7 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import { useEffect } from 'react';
 
 function MoviesCardList({ moviesList, likedMovies, onLike, onDelete }) {
-  useEffect(() => {}, [onLike, onDelete]);
-
   const updatedMoviesList = moviesList.map((movie) => {
     const isLiked = likedMovies.some(
       (likedMovie) => likedMovie.movieId === movie.id

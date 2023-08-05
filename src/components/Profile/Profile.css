@@ -98,18 +98,35 @@
   color: #ff4062;
 }
 
+.profile__button_type_change:hover {
+  opacity: 0.6;
+  font-size: 12px;
+}
+
+.profile__button_type_exit:hover {
+  opacity: 0.6;
+  font-size: 12px;
+}
+
 .profile__button_type_submit {
   font-weight: 500;
   font-size: 14px;
   width: 100%;
   min-height: 45px;
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   border-radius: 3px;
   margin-bottom: 70px;
+  border: 1px solid #000;
 }
 
-.profile__button:hover {
+.profile__button_type_submit_enabled {
+  background-color: #000;
+  color: #fff;
+  border: none;
+}
+
+.profile__button_type_submit_enabled:hover {
   opacity: 0.6;
   font-size: 12px;
 }
@@ -183,7 +200,15 @@
     margin-bottom: 40px;
   }
 
-  .profile__button:hover {
+  .profile__button_type_change:hover {
+    font-size: 11px;
+  }
+
+  .profile__button_type_exit:hover {
+    font-size: 11px;
+  }
+
+  .profile__button_type_submit_enabled:hover {
     font-size: 11px;
   }
 
