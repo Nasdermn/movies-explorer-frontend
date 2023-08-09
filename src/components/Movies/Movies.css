@@ -30,6 +30,14 @@
   font-size: 11px;
 }
 
+.movies__text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: auto;
+  color: #000;
+}
+
 @media (min-width: 531px) and (max-width: 1000px) {
   .movies {
     padding: 0 30px;

@@ -11,14 +11,14 @@
   font-size: 140px;
   line-height: auto;
   font-weight: 400;
-  margin: 125px 0 10px;
+  margin: 10px 0;
 }
 
 .error__subtitle {
   font-size: 16px;
   line-height: auto;
   font-weight: 400;
-  margin: 0 0 184px 0;
+  margin: 0 0 150px 0;
 }
 
 .error__link {
@@ -27,7 +27,11 @@
   font-weight: 400;
   text-decoration: none;
   color: black;
-  transition: all 0.7s ease;
+  transition: all 0.4s ease;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .error__link:hover {
@@ -35,21 +39,13 @@
   opacity: 0.7;
 }
 
-@media (min-width: 600px) and (max-width: 900px) {
-  .error__title {
-    margin: 186px 0 10px;
-  }
-}
-
 @media (max-width: 599px) {
   .error__title {
-    margin: 299px 0 13px;
     font-size: 80px;
   }
 
   .error__subtitle {
     font-size: 12px;
-    margin-bottom: 285px;
   }
 
   .error__link {

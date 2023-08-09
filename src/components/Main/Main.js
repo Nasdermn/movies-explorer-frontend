@@ -6,10 +6,10 @@ import Student from '../Student/Student.js';
 import Portfolio from '../Portfolio/Portfolio.js';
 import Footer from '../Footer/Footer.js';
 
-function Main() {
+function Main({ loggedIn }) {
   return (
-    <body className='body'>
-      <Header color={{ pink: true }} loggedIn={false} />
+    <div className='body'>
+      <Header color={{ pink: true }} loggedIn={loggedIn} />
       <main className='main'>
         <Promo />
         <Project />
@@ -18,7 +18,7 @@ function Main() {
         <Portfolio />
       </main>
       <Footer />
-    </body>
+    </div>
   );
 }
 
