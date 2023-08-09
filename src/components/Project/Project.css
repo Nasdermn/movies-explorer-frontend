@@ -1,0 +1,174 @@
+.project {
+  box-sizing: border-box;
+  background-color: #fff;
+  width: 100%;
+  max-width: 1280px;
+  min-height: 608px;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+  padding: 110px 70px;
+  align-items: center;
+}
+
+.project__title {
+  width: 100%;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: auto;
+  letter-spacing: -0.04em;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #000;
+}
+
+.project__description {
+  width: 100%;
+  display: flex;
+  gap: 50px;
+  margin-bottom: 40px;
+}
+
+.project__description-block {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.project__headline {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: auto;
+  letter-spacing: -0.04em;
+}
+
+.project__paragraph {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.project__deadlines {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) 4fr;
+  grid-template-rows: 36px, 17px;
+  row-gap: 14px;
+}
+
+.project__deadline {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  min-height: 36px;
+  padding: 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: auto;
+  background-color: #000;
+  color: #fff;
+}
+
+.project__deadline_color_gray {
+  background-color: #f2f2f2;
+  color: #000;
+}
+
+.project__step {
+  margin: 0;
+  text-align: center;
+  color: #a0a0a0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+}
+
+@media (min-width: 400px) and (max-width: 800px) {
+  .project {
+    min-height: 585px;
+    gap: 70px;
+    padding: 90px 50px;
+  }
+
+  .project__description {
+    gap: 35px;
+    margin-bottom: 23px;
+  }
+
+  .project__description-block {
+    gap: 22px;
+  }
+
+  .project__paragraph {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .project__deadlines {
+    grid-template-columns: minmax(100px, 140px) minmax(200px, 560px);
+    row-gap: 14px;
+  }
+
+  .project__deadline {
+    font-weight: 400;
+  }
+
+  .project__step {
+    color: #a0a0a0;
+  }
+}
+
+@media (max-width: 399px) {
+  .project {
+    min-height: 641px;
+    gap: 60px;
+    padding: 70px 18px;
+  }
+
+  .project__title {
+    font-size: 18px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #000;
+  }
+
+  .project__description {
+    flex-direction: column;
+    gap: 60px;
+    margin: 0;
+  }
+
+  .project__description-block {
+    gap: 16px;
+  }
+
+  .project__headline {
+    font-size: 18px;
+  }
+
+  .project__paragraph {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .project__deadlines {
+    grid-template-columns: 100px minmax(100px, 184px);
+    justify-content: center;
+    row-gap: 10px;
+  }
+
+  .project__deadline {
+    font-size: 11px;
+  }
+
+  .project__step {
+    color: #a0a0a0;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: auto;
+  }
+}
