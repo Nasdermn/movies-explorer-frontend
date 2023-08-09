@@ -40,7 +40,7 @@ function SearchForm({
           className='search-form__input'
           type='text'
           name='search-movies'
-          placeholder='Фильм'
+          placeholder='Введите текст для поиска фильмов...'
           onChange={handleInputChange}
           value={searchQuery}
         />

@@ -80,7 +80,7 @@
   background-color: #591313;
   color: #fff;
   border-radius: 3px;
-  margin: 49px 0 -4px;
+  margin: 30px 0 -4px;
 }
 
 .login__button_enabled {
@@ -117,7 +117,6 @@
 
 @media (max-width: 530px) {
   .login__title {
-    margin: 50px 0 80px;
     width: 100%;
     text-align: center;
     align-self: none;
@@ -129,7 +128,6 @@
 
   .login__button {
     font-size: 12px;
-    margin: 227px 0 -6px;
   }
 
   .login__text {

@@ -45,7 +45,7 @@ function Profile() {
           setError(err.message);
           setTimeout(() => {
             setError(false);
-          }, 3000);
+          }, 3500);
         });
     }
   }
@@ -101,14 +101,22 @@ function Profile() {
                 onChange={handleChange}
                 required
                 placeholder='Введите e-mail'
+                maxLength={64}
               />
             </label>
             {isDataChanged && (
               <p className='profile__success-message'>Успешная смена данных!</p>
             )}
-            {error && (
+            {error === 'Ошибка сервера' && (
               <p className='profile__error-message'>
-                Данный email уже кем-то используется, выберите другой.
+                Произошла ошибка на сервере. Скорее всего, данный email уже
+                кем-то используется, выберите другой.
+              </p>
+            )}
+            {error === 'Validation failed' && (
+              <p className='profile__error-message'>
+                Введённый email не проходит валидацию. Убедитесь, что вы ввели
+                настоящий email.
               </p>
             )}
           </form>
