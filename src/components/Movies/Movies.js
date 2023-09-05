@@ -61,6 +61,7 @@ function Movies({ likedMovies, onLike }) {
   useEffect(() => {
     localStorage.setItem('shortFilmChecked', JSON.stringify(shortFilmChecked));
     handleSearchSubmit();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shortFilmChecked]);
 
   useEffect(() => {

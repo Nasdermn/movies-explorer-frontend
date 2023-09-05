@@ -1,4 +1,5 @@
 import './App.css';
+import jwt_decode from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { useCurrentUserContext } from '../../contexts/CurrentUserContext.js';
@@ -21,24 +22,50 @@ function App() {
   const jwt = localStorage.getItem('jwt');
 
   useEffect(() => {
-    if (loggedIn) {
-      Promise.all([mainApi.getUser(jwt), mainApi.getSavedMovies()])
-        .then(([apiUser, apiMovies]) => {
-          //Отрисовка профиля
-          setUserInfo({ name: apiUser.name, email: apiUser.email });
-          //Отрисовка карточек
-          setLikedMovies(apiMovies);
-          //Остановка загрузки
-          setIsLoading(false);
-        })
-        .catch((err) => console.log(err))
-        .finally(() => {
-          setIsLoading(false);
-        });
-    } else {
-      setIsLoading(false);
-    }
-  }, [loggedIn, setUserInfo, jwt]);
+    const isUserLogged = () => {
+      //проверяем, не истёк ли токен (больше ли дата его истечения в секундах, чем текущая дата в секундах)
+      const tokenStatus = () => {
+        if (jwt) {
+          return jwt_decode(jwt).exp - Math.floor(Date.now() / 1000) > 86400
+            ? 1
+            : 2;
+        }
+        return 3;
+      };
+      if (loggedIn && tokenStatus() === 1) {
+        Promise.all([mainApi.getUser(jwt), mainApi.getSavedMovies()])
+          .then(([apiUser, apiMovies]) => {
+            //Отрисовка профиля
+            setUserInfo({ name: apiUser.name, email: apiUser.email });
+            //Отрисовка карточек
+            setLikedMovies(apiMovies);
+            //Остановка загрузки
+            setIsLoading(false);
+          })
+          .catch((err) => console.log(err))
+          .finally(() => {
+            setIsLoading(false);
+          });
+      } else {
+        setIsLoading(false);
+        if (tokenStatus() === 2) {
+          // Токен истечет менее, чем через день! выходим из системы
+          localStorage.removeItem('jwt');
+          setLoggedIn(false);
+        }
+      }
+    };
+
+    isUserLogged();
+
+    //будем проверять токен раз в день, если вдруг пользователь будет несколько дней сидеть на сайте
+    const tokenCheckInterval = setInterval(isUserLogged, 86400 * 1000);
+
+    return () => {
+      // Очищаем интервал при размонтировании компонента
+      clearInterval(tokenCheckInterval);
+    };
+  }, [loggedIn, setUserInfo, jwt, setLoggedIn]);
 
   const handleDeleteCard = (id) => {
     mainApi

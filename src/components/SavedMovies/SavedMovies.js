@@ -18,6 +18,7 @@ function SavedMovies({ likedMovies, onDelete }) {
 
   useEffect(() => {
     handleSearchSubmit();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shortFilmChecked]);
 
   useEffect(() => {
